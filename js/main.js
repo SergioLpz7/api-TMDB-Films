@@ -60,6 +60,5 @@ inp.addEventListener("input", function (e) {
       e.classList.remove("oculta")
     }else e.classList.add("oculta")
 
-    console.log("titulo: " + titulo + " valor: " + valor);
   });  
 });
