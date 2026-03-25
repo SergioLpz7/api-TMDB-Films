@@ -61,8 +61,5 @@ inp.addEventListener("input", function (e) {
     }else e.classList.add("oculta")
 
     console.log("titulo: " + titulo + " valor: " + valor);
-  });
-
-
-  
+  });  
 });
