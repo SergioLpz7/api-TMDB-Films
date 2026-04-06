@@ -155,6 +155,11 @@ header {
   cursor: pointer;
   font-weight: bold;
 }
+.btn-cerrar:hover{
+  background-color: #000000;
+  color: #e50914;
+
+}
 
 @keyframes aparecer {
   from {

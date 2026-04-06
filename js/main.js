@@ -78,7 +78,7 @@ const anterior = document.querySelector(".overlay");
       <div class="popup-contenido">
         <h2>${pelicula.title}</h2>
         <div class="puntuacion">
-          <span class="nota-principal">⭐ ${pelicula.vote_average}</span>
+          <span class="nota-principal">⭐ ${pelicula.vote_average.toFixed(1)}</span>
           <span class="votos-secundarios">(${pelicula.vote_count} votos)</span>
         </div>
         <p style="color: #ccc; line-height: 1.6;">${pelicula.overview || "Sin descripción disponible."}</p>
