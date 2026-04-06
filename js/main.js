@@ -34,8 +34,8 @@ async function pintarPeliculas() {
     div.className = "pelicula";
 
     div.innerHTML = `
-            <h3> ${e.title} </h3>
-            <img src="${imagenURL}${e.poster_path} alt="imagen de la pelicula" loading="lazy">
+        <h3> ${e.title} </h3>
+        <img src="${imagenURL}${e.poster_path} alt="imagen de la pelicula" loading="lazy">
         `;
 
     cont.appendChild(div);
@@ -58,22 +58,41 @@ inp.addEventListener("input", function (e) {
       e.classList.remove("oculta");
     } else e.classList.add("oculta");
 
-    console.log("titulo: " + titulo + " valor: " + valor);
   });
 });
 
 function popup(pelicula) {
-  const existe = document.getElementById("popup")
-  if (existe) {existe.remove()}
-  const cont = document.getElementById("contenedor");
-  const div = document.createElement("div");
-  div.id = "popup"
-  div.className = "popup"
-  div.innerHTML = `<h2> ${pelicula.title} </h2>
-    <img src="${imagenURL}${pelicula.poster_path} alt="imagen de la pelicula" loading="lazy">
-    <p> ${pelicula.backdrop_path}
+const anterior = document.querySelector(".overlay");
+  if (anterior) anterior.remove();
 
-  `
-  cont.appendChild(div)
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+
+  const div = document.createElement("div");
+  div.id = "popup";
+  div.className = "popup";
+  
+  div.innerHTML = `
+      <button class="btn-cerrar">X</button>
+      <img src="${imagenURL}${pelicula.backdrop_path}" alt="${pelicula.title}">
+      <div class="popup-contenido">
+        <h2>${pelicula.title}</h2>
+        <div class="puntuacion">
+          <span class="nota-principal">⭐ ${pelicula.vote_average}</span>
+          <span class="votos-secundarios">(${pelicula.vote_count} votos)</span>
+        </div>
+        <p style="color: #ccc; line-height: 1.6;">${pelicula.overview || "Sin descripción disponible."}</p>
+        <p><small><b>Fecha de estreno: <b>${pelicula.release_date}</small></p>
+      </div>
+  `;
+
+  div.querySelector(".btn-cerrar").addEventListener("click", () => overlay.remove());
+  
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) overlay.remove();
+  });
+
+  overlay.appendChild(div);
+  document.body.appendChild(overlay);
 
 }
