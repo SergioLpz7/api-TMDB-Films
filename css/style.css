@@ -160,6 +160,40 @@ header {
   color: #e50914;
 
 }
+.nav-flechas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 650px; 
+  max-width: 95vw; 
+  display: flex;
+  justify-content: space-between;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.nav-flechas button {
+  background: #00000080;
+  border-radius: 50%;
+  pointer-events: auto;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 20px 10px;
+  cursor: pointer;
+  z-index: 1000000;
+  font-weight: bold; 
+  font-family: Arial, sans-serif;
+}
+
+.nav-flechas button:hover {
+  background: #e50914; 
+}
+
+.nav-flechas button:disabled {
+  visibility: hidden;
+}
 
 @keyframes aparecer {
   from {
